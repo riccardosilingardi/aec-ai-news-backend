@@ -7,7 +7,7 @@ uvicorn[standard]==0.24.0
 httpx==0.25.2
 
 # Database and storage
-supabase==2.3.4
+# supabase==2.3.4  # Removed to avoid Rust compilation
 
 # AI APIs
 openai==1.6.1

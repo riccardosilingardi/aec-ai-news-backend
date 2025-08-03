@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: aec-ai-news-backend
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+envVars:
+      - key: SUPABASE_URL
+        value: https://iiiqjzfyljokoslnpeqb.supabase.co
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: EMAIL_SERVICE_KEY
+        sync: false
+      - key: WEBHOOK_SECRET
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+      - key: PORT
+        value: 10000

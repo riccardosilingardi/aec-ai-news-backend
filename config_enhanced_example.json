@@ -1,0 +1,84 @@
+{
+  "enhanced_scout_config": {
+    "comment": "Enhanced Scout Agent Configuration Example",
+    
+    "basic_config": {
+      "rss_feeds": [
+        "https://www.archdaily.com/rss/",
+        "https://feeds.feedburner.com/TEDTalks_video",
+        "https://www.constructiondive.com/feeds/news/",
+        "https://www.enr.com/rss/news"
+      ],
+      "scraping_interval": 1800,
+      "max_concurrent_scrapes": 3,
+      "max_articles_per_source": 10,
+      "rate_limit_delay": 2.0
+    },
+    
+    "enhanced_features": {
+      "enable_advanced_scraping": true,
+      "enable_search": true,
+      "enable_youtube": true,
+      "web_search_limit": 20,
+      "youtube_search_limit": 10
+    },
+    
+    "advanced_scraper": {
+      "use_scrapling": true,
+      "scraper_max_retries": 3,
+      "scraper_retry_delay": 5.0,
+      "scraper_timeout": 30.0,
+      "max_content_length": 10000
+    },
+    
+    "search_queries": [
+      "AI construction industry 2024",
+      "artificial intelligence architecture design",
+      "BIM machine learning integration",
+      "construction automation robotics",
+      "smart buildings IoT AI",
+      "digital twins construction industry",
+      "parametric design artificial intelligence",
+      "project management AI construction"
+    ],
+    
+    "youtube_search_queries": [
+      "AI construction",
+      "artificial intelligence architecture",
+      "BIM artificial intelligence",
+      "construction automation",
+      "smart buildings AI",
+      "digital twins construction",
+      "robotics construction",
+      "machine learning architecture"
+    ],
+    
+    "api_keys": {
+      "comment": "Set these as environment variables or in secure config",
+      "bing_api_key": "YOUR_BING_API_KEY",
+      "google_api_key": "YOUR_GOOGLE_API_KEY",
+      "google_cse_id": "YOUR_GOOGLE_CSE_ID",
+      "serpapi_key": "YOUR_SERPAPI_KEY",
+      "klavis_api_key": "YOUR_KLAVIS_API_KEY",
+      "anthropic_api_key": "YOUR_ANTHROPIC_API_KEY"
+    }
+  },
+  
+  "environment_variables": {
+    "comment": "Recommended way to set API keys",
+    "BING_API_KEY": "your_bing_api_key_here",
+    "GOOGLE_API_KEY": "your_google_api_key_here",
+    "GOOGLE_CSE_ID": "your_google_cse_id_here",
+    "SERPAPI_KEY": "your_serpapi_key_here",
+    "KLAVIS_API_KEY": "your_klavis_api_key_here",
+    "ANTHROPIC_API_KEY": "your_anthropic_api_key_here"
+  },
+  
+  "usage_notes": {
+    "scrapling": "Install with: pip install scrapling",
+    "klavis": "Install with: pip install klavis",
+    "anthropic": "Install with: pip install anthropic",
+    "search_apis": "Sign up for API keys at respective provider websites",
+    "security": "Never commit API keys to version control"
+  }
+}

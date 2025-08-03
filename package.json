@@ -1,0 +1,66 @@
+{
+  "name": "aec-ai-news",
+  "version": "1.0.0",
+  "description": "AI-powered newsletter system for Architecture, Engineering & Construction industry",
+  "main": "backend/main.py",
+  "scripts": {
+    "dev": "python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000",
+    "dev:mcp": "python backend/mcp_server_main.py",
+    "build": "python -m py_compile backend/multi_agent_system.py",
+    "build:worker": "node deployment/scripts/build-worker.js",
+    "test": "pytest backend/tests/ -v",
+    "test:unit": "pytest backend/tests/unit/ -v",
+    "test:integration": "pytest backend/tests/integration/ -v",
+    "test:e2e": "pytest backend/tests/e2e/ -v",
+    "lint": "flake8 backend/ --max-line-length=100",
+    "format": "black backend/ --line-length=100",
+    "type-check": "mypy backend/",
+    "deploy:dev": "bash deployment/scripts/deploy.sh development",
+    "deploy:staging": "bash deployment/scripts/deploy.sh staging",
+    "deploy:prod": "bash deployment/scripts/deploy.sh production",
+    "docker:build": "docker-compose -f deployment/docker/docker-compose.yml build",
+    "docker:up": "docker-compose -f deployment/docker/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f deployment/docker/docker-compose.yml down",
+    "docker:logs": "docker-compose -f deployment/docker/docker-compose.yml logs -f",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:reset": "supabase db reset",
+    "supabase:migrate": "supabase db push",
+    "setup": "bash deployment/scripts/setup.sh",
+    "health": "curl -f http://localhost:8000/health",
+    "health:mcp": "curl -f http://localhost:3000/health"
+  },
+  "keywords": [
+    "ai",
+    "newsletter",
+    "aec",
+    "architecture",
+    "engineering",
+    "construction",
+    "multi-agent",
+    "mcp",
+    "automation"
+  ],
+  "author": "AEC AI News Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "esbuild": "^0.19.0"
+  },
+  "dependencies": {
+    "wrangler": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "python": ">=3.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/aec-ai-news.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/aec-ai-news/issues"
+  },
+  "homepage": "https://aec-ai-news.com"
+}

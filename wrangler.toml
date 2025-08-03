@@ -1,0 +1,9 @@
+name = "aec-ai-news-backend"
+main = "deployment/cloudflare/worker.js"
+compatibility_date = "2024-01-15"
+
+[env.production]
+name = "aec-ai-news-prod"
+
+[vars]
+ENVIRONMENT = "production"

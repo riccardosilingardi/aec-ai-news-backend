@@ -1,0 +1,91 @@
+# Cloudflare Workers Configuration for AEC AI News
+# Multi-Agent System Backend Deployment
+
+name = "aec-ai-news-backend"
+main = "src/worker.js"
+compatibility_date = "2024-01-15"
+compatibility_flags = ["nodejs_compat"]
+
+# Worker configuration
+[env.production]
+name = "aec-ai-news-prod"
+route = "api.aec-ai-news.com/*"
+
+[env.staging]
+name = "aec-ai-news-staging"
+route = "staging-api.aec-ai-news.com/*"
+
+[env.development]
+name = "aec-ai-news-dev"
+
+# Environment variables
+[vars]
+ENVIRONMENT = "production"
+LOG_LEVEL = "info"
+MCP_SERVER_PORT = "3000"
+
+# KV Namespaces for caching
+[[kv_namespaces]]
+binding = "CONTENT_CACHE"
+id = "your-content-cache-namespace-id"
+preview_id = "your-content-cache-preview-id"
+
+[[kv_namespaces]]
+binding = "ANALYTICS_CACHE"
+id = "your-analytics-cache-namespace-id"
+preview_id = "your-analytics-cache-preview-id"
+
+# Durable Objects for state management
+[[durable_objects.bindings]]
+name = "AGENT_ORCHESTRATOR"
+class_name = "AgentOrchestrator"
+
+[[durable_objects.bindings]]
+name = "CONTENT_PIPELINE"
+class_name = "ContentPipeline"
+
+# R2 Storage for large files
+[[r2_buckets]]
+binding = "NEWSLETTER_STORAGE"
+bucket_name = "aec-ai-news-newsletters"
+
+# Queue for async processing
+[[queues.producers]]
+binding = "CONTENT_QUEUE"
+queue = "content-processing-queue"
+
+[[queues.consumers]]
+queue = "content-processing-queue"
+max_batch_size = 10
+max_batch_timeout = 30
+
+# Scheduled triggers for regular tasks
+[[triggers]]
+crons = ["0 */6 * * *"]  # Every 6 hours for content discovery
+
+[[triggers]]
+crons = ["0 8 * * 1"]    # Monday 8 AM for newsletter generation
+
+# Analytics Engine for metrics
+[analytics_engine_datasets]
+[[analytics_engine_datasets.bindings]]
+binding = "SYSTEM_METRICS"
+dataset = "system_performance"
+
+# Secrets (set via wrangler secret put)
+# SUPABASE_URL
+# SUPABASE_SERVICE_KEY
+# OPENAI_API_KEY
+# ANTHROPIC_API_KEY
+# EMAIL_SERVICE_KEY
+# WEBHOOK_SECRET
+
+# Build configuration
+[build]
+command = "npm run build:worker"
+cwd = "backend"
+
+# Limits
+[limits]
+cpu_ms = 50000     # 50 seconds max CPU time
+memory_mb = 512    # 512 MB memory limit

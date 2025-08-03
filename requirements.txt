@@ -10,7 +10,7 @@ aiohttp==3.9.1
 
 # AI APIs (full functionality)
 openai==1.6.1
-anthropic==0.7.8
+# anthropic==0.7.8  # Temporarily use requests for Anthropic API
 
 # Web scraping (full functionality)
 beautifulsoup4==4.12.2

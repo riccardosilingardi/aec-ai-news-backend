@@ -1,40 +1,13 @@
-# AEC AI News Multi-Agent System - Full Features, Render Compatible
-# Core web framework
+# AEC AI News Multi-Agent System - Zero Rust Dependencies
 fastapi==0.104.1
 uvicorn==0.24.0
-
-# HTTP clients
 httpx==0.25.2
 requests==2.31.0
-aiohttp==3.9.1
-
-# AI APIs (full functionality)
 openai==1.6.1
-# anthropic==0.7.8  # Temporarily use requests for Anthropic API
-
-# Web scraping (full functionality)
 beautifulsoup4==4.12.2
 feedparser==6.0.10
-# lxml==4.9.3  # Temporarily removed - causes Rust compilation
-
-# Data validation
 pydantic==2.5.0
-
-# Date/time parsing (full functionality)
 python-dateutil==2.8.2
-
-# Email services (full functionality)
-mailjet-rest==1.3.4
-
-# Configuration
 python-dotenv==1.0.0
-
-# Scheduling (full functionality)
 schedule==1.2.0
-
-# Templates
 jinja2==3.1.2
-
-# Development and testing
-pytest==7.4.3
-pytest-asyncio==0.21.1

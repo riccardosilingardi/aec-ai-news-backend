@@ -58,4 +58,4 @@ tmp/
 
 # Claude files
 .claude/
-*.txt
+# *.txt  # Commented out to allow requirements.txt

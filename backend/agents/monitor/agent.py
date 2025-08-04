@@ -30,7 +30,23 @@ from datetime import datetime, timedelta
 from typing import Dict, Any, List, Optional
 import psutil
 
-from ...core.agent_base import BaseAgent, AgentStatus, AgentTask
+import sys
+import os
+import importlib.util
+
+# Try multiple paths for architecture import
+try:
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    from multi_agent_architecture import BaseAgent, AgentTask, AgentStatus
+except ImportError:
+    # Load from project root
+    arch_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), 'multi-agent-architecture.py')
+    spec = importlib.util.spec_from_file_location("multi_agent_architecture", arch_path)
+    arch_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(arch_module)
+    BaseAgent = arch_module.BaseAgent
+    AgentTask = arch_module.AgentTask
+    AgentStatus = arch_module.AgentStatus
 
 logger = logging.getLogger(__name__)
 

@@ -1,13 +1,17 @@
-# AEC AI News Multi-Agent System - Zero Rust Dependencies
-fastapi==0.104.1
-uvicorn==0.24.0
-httpx==0.25.2
+# AEC AI News Multi-Agent System - Zero Rust Dependencies (Fixed)
+fastapi==0.95.2
+uvicorn==0.20.0
+httpx==0.24.1
 requests==2.31.0
-openai==1.6.1
+openai==0.28.1
 beautifulsoup4==4.12.2
 feedparser==6.0.10
-pydantic==2.5.0
+pydantic==1.10.12
 python-dateutil==2.8.2
 python-dotenv==1.0.0
 schedule==1.2.0
 jinja2==3.1.2
+
+# Force older versions without Rust dependencies
+cryptography==3.4.8
+cffi==1.15.1

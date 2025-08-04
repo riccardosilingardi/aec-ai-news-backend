@@ -9,7 +9,10 @@ from datetime import datetime, timedelta
 from typing import Dict, Any, List, Optional
 import json
 
-from ..core.architecture import AgentTask, TaskPriority
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from core.architecture import AgentTask, TaskPriority
 
 logger = logging.getLogger(__name__)
 

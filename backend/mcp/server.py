@@ -42,10 +42,11 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from core.config import get_config
-from ..multi_agent_system import MultiAgentSystem
-from .tools import MCPTools
-from .resources import MCPResources
-from .prompts import MCPPrompts
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from multi_agent_system import MultiAgentSystem
+from mcp.tools import MCPTools
+from mcp.resources import MCPResources
+from mcp.prompts import MCPPrompts
 
 logger = logging.getLogger(__name__)
 

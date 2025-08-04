@@ -202,6 +202,25 @@ async def get_newsletters():
         logger.error(f"Failed to get newsletters: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/api/subscribe")
+async def subscribe_email(request: dict):
+    """Subscribe email to newsletter"""
+    try:
+        email = request.get('email')
+        gdpr_consent = request.get('gdpr_consent', False)
+        
+        if not email:
+            raise HTTPException(status_code=400, detail="Email required")
+        if not gdpr_consent:
+            raise HTTPException(status_code=400, detail="GDPR consent required")
+            
+        # Simple success for now - later integrate with Supabase
+        logger.info(f"New subscription: {email}")
+        return {"message": "Subscription successful", "email": email}
+    except Exception as e:
+        logger.error(f"Subscription failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
     uvicorn.run(

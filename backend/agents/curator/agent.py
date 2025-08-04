@@ -15,8 +15,22 @@ import hashlib
 # Import base classes from the architecture
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-from multi_agent_architecture import BaseAgent, AgentTask, ContentItem, AgentStatus
+import importlib.util
+
+# Try multiple paths for architecture import
+try:
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    from multi_agent_architecture import BaseAgent, AgentTask, ContentItem, AgentStatus
+except ImportError:
+    # Load from project root
+    arch_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), 'multi-agent-architecture.py')
+    spec = importlib.util.spec_from_file_location("multi_agent_architecture", arch_path)
+    arch_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(arch_module)
+    BaseAgent = arch_module.BaseAgent
+    AgentTask = arch_module.AgentTask
+    ContentItem = arch_module.ContentItem
+    AgentStatus = arch_module.AgentStatus
 
 logger = logging.getLogger(__name__)
 

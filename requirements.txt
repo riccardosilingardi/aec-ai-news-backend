@@ -1,4 +1,4 @@
-# AEC AI News Multi-Agent System - Zero Rust Dependencies (Fixed)
+# AEC AI News Multi-Agent System - Python 3.8 Compatible Stack
 fastapi==0.88.0
 uvicorn==0.20.0
 httpx==0.24.1
@@ -13,6 +13,6 @@ schedule==1.2.0
 jinja2==3.1.2
 typing-extensions==4.4.0
 
-# Force older versions without Rust dependencies
+# Force specific versions for Python 3.8 compatibility
 cryptography==3.4.8
 cffi==1.15.1

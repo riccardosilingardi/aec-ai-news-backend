@@ -38,7 +38,10 @@ except ImportError:
     MCP_AVAILABLE = False
     FastMCP = None
 
-from ..core.config import get_config
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from core.config import get_config
 from ..multi_agent_system import MultiAgentSystem
 from .tools import MCPTools
 from .resources import MCPResources

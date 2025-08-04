@@ -12,7 +12,31 @@ import json
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from core.architecture import AgentTask, TaskPriority
+# Import from multi_agent_architecture instead
+try:
+    from multi_agent_architecture import AgentTask, AgentStatus
+    # Define TaskPriority locally since it's not in architecture
+    from enum import Enum
+    class TaskPriority(Enum):
+        HIGH = 1
+        MEDIUM = 2
+        LOW = 3
+except ImportError:
+    # Fallback definitions
+    from dataclasses import dataclass
+    from enum import Enum
+    
+    class TaskPriority(Enum):
+        HIGH = 1
+        MEDIUM = 2
+        LOW = 3
+    
+    @dataclass
+    class AgentTask:
+        task_id: str
+        agent_id: str
+        task_type: str
+        data: dict
 
 logger = logging.getLogger(__name__)
 
